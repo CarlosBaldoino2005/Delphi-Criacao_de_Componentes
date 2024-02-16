@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5099C80A-3A86-46D2-85B1-27500BF1ADF9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pkgThuBitSimples.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pkgThuBitRelogio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pkgThuBitLegenda.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Teste\ThubitTeste.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pkgThuBitSimples">
+        <MSBuild Projects="pkgThuBitSimples.dproj"/>
+    </Target>
+    <Target Name="pkgThuBitSimples:Clean">
+        <MSBuild Projects="pkgThuBitSimples.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgThuBitSimples:Make">
+        <MSBuild Projects="pkgThuBitSimples.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgThuBitRelogio">
+        <MSBuild Projects="pkgThuBitRelogio.dproj"/>
+    </Target>
+    <Target Name="pkgThuBitRelogio:Clean">
+        <MSBuild Projects="pkgThuBitRelogio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgThuBitRelogio:Make">
+        <MSBuild Projects="pkgThuBitRelogio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgThuBitLegenda">
+        <MSBuild Projects="pkgThuBitLegenda.dproj"/>
+    </Target>
+    <Target Name="pkgThuBitLegenda:Clean">
+        <MSBuild Projects="pkgThuBitLegenda.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgThuBitLegenda:Make">
+        <MSBuild Projects="pkgThuBitLegenda.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ThubitTeste">
+        <MSBuild Projects="Teste\ThubitTeste.dproj"/>
+    </Target>
+    <Target Name="ThubitTeste:Clean">
+        <MSBuild Projects="Teste\ThubitTeste.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ThubitTeste:Make">
+        <MSBuild Projects="Teste\ThubitTeste.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pkgThuBitSimples;pkgThuBitRelogio;pkgThuBitLegenda;ThubitTeste"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pkgThuBitSimples:Clean;pkgThuBitRelogio:Clean;pkgThuBitLegenda:Clean;ThubitTeste:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pkgThuBitSimples:Make;pkgThuBitRelogio:Make;pkgThuBitLegenda:Make;ThubitTeste:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
